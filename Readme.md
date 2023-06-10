@@ -1,12 +1,13 @@
 # IACV Project Politecnico di Milano 2022-2023
-This project aims to analyse the geometric characteristics of clips inside the KT3DMoSeg dataset [[1]](#1), built upon the KITTI benchmark, that can be found in the [Data](./MultiViewMoSeg-master/Data/) folder.
+This project aims to analyse the geometric characteristics of clips inside the KT3DMoSeg dataset [[1]](#1), built upon the KITTI benchmark, that can be found in the [Data](./Data/) folder.
 KT3DMoSeg dataset was created by manually selecting 22 sequences and labelling each individual foreground object. In the dataset are present sequences with more significant camera translation so camera mounted on moving cars are preferred.
 Clips with more than 3 motions are also chosen, as long as these moving objects contain enough features for forming motion hypotheses. 22 short clips, each with 10-20 frames, are chosen for evaluation. We extract dense trajectories from each sequence using [[2]](#2) and prune out trajectories shorter than 5 frames. 
 
 ## Project structure
-The original repository was created by Xun Xu, Loong-Fah Cheong and Zhuwen Li. Note that our work for this project is entirely saved in the [Visualize](./MultiViewMoSeg-master/Visualize/) folder, and other minor changes for the correct introduction of the additional geometric models Fundamental Translational, Fundamental Affine and SubsetOnlyHF.
+The original repository was created by Xun Xu, Loong-Fah Cheong and Zhuwen Li. Note that our work for this project is almost entirely in the [Visualize](./Visualize/) folder, and other minor changes for the correct introduction of the additional geometric models Fundamental Translational, Fundamental Affine and SubsetOnlyHF and for the visualization of the kmeans results with the correct alpha parameters.
 
 * **Data**: the KT3DMoSeg dataset. One `.mat` file per clip describing all its characteristics. 
+* **OriginalSequence**: the KT3DMoSeg dataset in images format.
 * **Results**: this folder is used to save the results obtained from the following operations:
   - Sample hypotheses (Affine, Homography and Fundamental Matrix)
   - Compute the Ordered Residual Kernel (ORK) 
@@ -23,43 +24,43 @@ The original repository was created by Xun Xu, Loong-Fah Cheong and Zhuwen Li. N
   - Visualize: visualize and save all the elements for the analysis of the clips.
 ## Contributions
 In this part we highlight specifically all the code contributions we developed in the repository:
-* [**Hype**](),[**Kernel**](),[**MoSeg**](): this is the part of the algorithm of the paper [[1]](#1), we added the MATLAB files for the computation of the Hypothesis, Kernel and Motion Segmentation for the models SubsetOnlyHF, FundamentalT and FundamentalA.
+* [**Hypo**](./script/Hypo),[**Kernel**](./script/Kernel),[**MoSeg**](./script/MoSeg): this is the part of the algorithm of the paper [[1]](#1), we added the MATLAB files for the computation of the Hypothesis, Kernel and Motion Segmentation for the models SubsetOnlyHF, FundamentalT and FundamentalA.
   - SubsetOnlyHF: `script_AHF_SubsetOnlyFH_RandSamp.m`
   - FundamentalT:  `script_FundamentalT_Hypo_RandSamp.m`, `script_FundamentalT_ORK_RandSamp.m`, `script_FundamentalT_MoSeg_RandSamp.m`.
   - FundamentalA:  `script_FundamentalA_Hypo_RandSamp.m`, `script_FundamentalA_ORK_RandSamp.m`, `script_FundamentalA_MoSeg_RandSamp.m`.
-* [**Results**](): In [MoSeg]() we stored an archive with 8 full experiments computed following the indication of the paper. This data will be used for all the anlysis.
-* [**Tools**](./MultiViewMoSeg-master/Tools): we adapted the model specific functions for fitting, computing the residuals and handling the degeneracies of the particular models in [Model Specific](./MultiViewMoSeg-master/Tools/multigs/model_specific)
+* [**Results**](./Results): In [MoSeg](./Results/MoSeg) we stored an archive with 8 full experiments computed following the indication of the paper. This data will be used for all the anlysis.
+* [**Tools**](./Tools): we adapted the model specific functions for fitting, computing the residuals and handling the degeneracies of the particular models in [Model Specific](./Tools/multigs/model_specific)
   - FundamentalT:  `fundamentalT_fit.m`, `fundamentalT_res.m`, `fundamentalT_degen.m`.
   - FundamentalA:  `fundamentalT_fit.m`, `fundamentalT_res.m`, `fundamentalT_degen.m`.
   - We also adapted the functions for Homography and Fundamental to our needs.
-* [**CheckPerf**](./MultiViewMoSeg-master/script/CheckPerf): our contribution in this folder is related to the tabular representations of the results and the search for alpha parameters:
+* [**CheckPerf**](./script/CheckPerf): our contribution in this folder is related to the tabular representations of the results and the search for alpha parameters:
   - `script_CheckCommonAlpha.m` : Find the optimal alpha for each model considering all the experiments in separately and combine the  segmentation results together in a table
   - `script_CheckCommonAlphaAverage.m` : Find the optimal alpha for each model considering all the experiments averaging the results and combine the segmentation results together in a table.
   - `script_CheckPerf_RandSamp.m` : Find the optimal alpha for each experiment (alphas are not constant among models) and combine the segmentation results together in a table.
   - You can also find here the results table formatted in pretty way (`datiBestAlpha.xls`, `datiSameAlpha.xls` and `datiSameAlphaAverage.xls`)
-* [**Visualize**](): in this folder is present the majority of our work conducted for the project. We created different `.m` scripts for the visualization of metrics such as epipolar lines, silhouette scores and evaluation clustering results. in particular:
-  - [Epipolar Lines](): Here you can find:
-    - `VisualizeEpipolarLines.m` : Visualize and save in [EpipolarLinesVideosOfBestF]() the epipolar lines computed with the minimum number of points.
-    - `VisualizeEpipolarLinesWithAllPoints.m` : Visualize and save in [EpipolarLinesVideosWithAllPoints]() the epipolar lines computed with the maximum number of points.
-    - `VisualizeEpipolarLinesWithMotionPoints.m` : Visualize and save in [EpipolarLinesVideosWithMotionPoints]() the epipolar lines computed with the maximum number of points divided per motion.
-  - [**HyperparameterTuning**](): Here you can find:
+* [**Visualize**](./script/Visualize): in this folder is present the majority of our work conducted for the project. We created different `.m` scripts for the visualization of metrics such as epipolar lines, silhouette scores and evaluation clustering results. in particular:
+  - [Epipolar Lines](./script/Visualize/EpipolarLines): Here you can find:
+    - `VisualizeEpipolarLines.m` : Visualize and save in [EpipolarLinesVideosOfBestF](./script/Visualize/EpipolarLines/EpipolarLinesVideosOfBestF) the epipolar lines computed with the minimum number of points.
+    - `VisualizeEpipolarLinesWithAllPoints.m` : Visualize and save in [EpipolarLinesVideosWithAllPoints](./script/Visualize/EpipolarLines/EpipolarLinesVideosWithAllPoints) the epipolar lines computed with the maximum number of points.
+    - `VisualizeEpipolarLinesWithMotionPoints.m` : Visualize and save in [EpipolarLinesVideosWithMotionPoints](./script/Visualize/EpipolarLines/EpipolarLinesVideosWithMotionPoints) the epipolar lines computed with the maximum number of points divided per motion.
+  - [**HyperparameterTuning**](./script/Visualize/HyperparameterTuning): Here you can find:
     - `ModelSelectionHypertuning.m` : Perform the process of parameter tuning for lambda1, lambda2 and lambda3 of the GRIC. Results are saved in  `BestLambdasNormalized.m` and `BestLambdas.m`
-  - [**Kmeans and Embeddings**]() : Here you can find:
-    - `VisualizeKmeansInteractive.m` : Perform kmeans with the choices of the model and experiment, outputs the video in [SegmentationVideos]().
+  - [**Kmeans and Embeddings**](./script/Visualize/Kmeans%20and%20Embeddings) : Here you can find:
+    - `VisualizeKmeansInteractive.m` : Perform kmeans with the choices of the model and experiment, outputs the video in [SegmentationVideos](./script/Visualize/Kmeans%20and%20Embeddings/SegmentationVideos).
     - `VisualizeSilhouettePlots.m` : Plot all the silhouette plots with respect of the embeddings for all the models.
-  - [**Model Silhouette**]() : Here you can find:
-    - `VisualizeModelsSilhouettePlots.m` /  `VisualizeModelsSilhouettePlotsNormalized.m` :  Save for each geometric model, foe each clip, for each couple of frames the silhouette plots derived from the geometric models. Results saved in [ModelSilouettes]().
-    - `VisualizeVideoModelSilhouettes.m` : Combine the results of the previous files in a video in [ModelSilhouettesNormalized]().
-  - [**Model Selection**]() : Here you can find:
-    - `ModelSelection.m` / `ModelSelectionNormalized.m` : Perform the process of model selection wrt various selection criteria and output a file `seq_best_model.mat` with the models for each motion. Results are stored in [ModelSelectionResults]().
-    - `ModelSelectionSilhouettePlotsNormalized.m` : Starting from the output of the selection process compute the silhouette plots and save them in [ModelSelectionSilhouettesNormalized]().
-    - `VideoModelSelction.m` : Combine the results of the previous file in a video in [ModelSelectionSilhouettesNormalized]().
+  - [**Model Silhouette**](./script/Visualize/Model%20Silhouettes) : Here you can find:
+    - `VisualizeModelsSilhouettePlots.m` /  `VisualizeModelsSilhouettePlotsNormalized.m` :  Save for each geometric model, foe each clip, for each couple of frames the silhouette plots derived from the geometric models. Results saved in [ModelSilouettes](./script/Visualize/Model%20Silhouettes/ModelSilouettes).
+    - `VisualizeVideoModelSilhouettes.m` : Combine the results of the previous files in a video in [ModelSilhouettesNormalized](./script/Visualize/Model%20Silhouettes/ModelSilouettesNormalized).
+  - [**Model Selection**](./script/Visualize/Model%20Selection) : Here you can find:
+    - `ModelSelection.m` / `ModelSelectionNormalized.m` : Perform the process of model selection wrt various selection criteria and output a file `seq_best_model.mat` with the models for each motion. Results are stored in [ModelSelectionResults](./script/Visualize/Model%20Selection/ModelSelectionResults).
+    - `ModelSelectionSilhouettePlotsNormalized.m` : Starting from the output of the selection process compute the silhouette plots and save them in [ModelSelectionSilhouettesNormalized](./script/Visualize/Model%20Selection/ModelSelectionSilhouettesNormalized).
+    - `VideoModelSelction.m` : Combine the results of the previous file in a video in [ModelSelectionSilhouettesNormalized](./script/Visualize/Model%20Selection/ModelSelectionSilhouettesNormalized).
 
 # Usage
 1. Refer to the Original README section to produce the experiment results.
 2. Store the results in Archivio.
-3. Visualize the results from [CheckPerf]() folder.
-4. There is not a specific order in the analysis we offer in [Visualize]() folder. In general you can follow the order presented above.
+3. Visualize the results from [CheckPerf](./script/CheckPerf) folder.
+4. There is not a specific order in the analysis we offer in [Visualize](./script/Visualize) folder. In general you can follow the order presented above.
 # References
 <a id="1">[1]</a> 
 X. Xu, L.F. Cheong, and Z. Li. Motion segmentation by exploiting complementary geometric models, In CVPR 2018.
