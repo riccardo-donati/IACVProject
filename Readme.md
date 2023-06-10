@@ -45,7 +45,7 @@ In this part we highlight specifically all the code contributions we developed i
     - `VisualizeEpipolarLinesWithMotionPoints.m` : Visualize and save in [EpipolarLinesVideosWithMotionPoints](./script/Visualize/EpipolarLines/EpipolarLinesVideosWithMotionPoints) the epipolar lines computed with the maximum number of points divided per motion.
   - [**HyperparameterTuning**](./script/Visualize/HyperparameterTuning): Here you can find:
     - `ModelSelectionHypertuning.m` : Perform the process of parameter tuning for lambda1, lambda2 and lambda3 of the GRIC. Results are saved in  `BestLambdasNormalized.m` and `BestLambdas.m`
-  - [**Kmeans and Embeddings**](./script/Visualize/Kmeans and Embeddings) : Here you can find:
+  - [**Kmeans and Embeddings**](./script/Visualize/Kmeans%20and%20Embeddings) : Here you can find:
     - `VisualizeKmeansInteractive.m` : Perform kmeans with the choices of the model and experiment, outputs the video in [SegmentationVideos](./script/Visualize/Kmeans and Embeddings/SegmentationVideos).
     - `VisualizeSilhouettePlots.m` : Plot all the silhouette plots with respect of the embeddings for all the models.
   - [**Model Silhouette**](./script/Visualize/Model Silhouettes) : Here you can find:
