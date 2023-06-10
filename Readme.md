@@ -46,15 +46,15 @@ In this part we highlight specifically all the code contributions we developed i
   - [**HyperparameterTuning**](./script/Visualize/HyperparameterTuning): Here you can find:
     - `ModelSelectionHypertuning.m` : Perform the process of parameter tuning for lambda1, lambda2 and lambda3 of the GRIC. Results are saved in  `BestLambdasNormalized.m` and `BestLambdas.m`
   - [**Kmeans and Embeddings**](./script/Visualize/Kmeans%20and%20Embeddings) : Here you can find:
-    - `VisualizeKmeansInteractive.m` : Perform kmeans with the choices of the model and experiment, outputs the video in [SegmentationVideos](./script/Visualize/Kmeans and Embeddings/SegmentationVideos).
+    - `VisualizeKmeansInteractive.m` : Perform kmeans with the choices of the model and experiment, outputs the video in [SegmentationVideos](./script/Visualize/Kmeans%20and%20Embeddings/SegmentationVideos).
     - `VisualizeSilhouettePlots.m` : Plot all the silhouette plots with respect of the embeddings for all the models.
-  - [**Model Silhouette**](./script/Visualize/Model Silhouettes) : Here you can find:
-    - `VisualizeModelsSilhouettePlots.m` /  `VisualizeModelsSilhouettePlotsNormalized.m` :  Save for each geometric model, foe each clip, for each couple of frames the silhouette plots derived from the geometric models. Results saved in [ModelSilouettes](./script/Visualize/Model Silhouettes/ModelSilouettes).
-    - `VisualizeVideoModelSilhouettes.m` : Combine the results of the previous files in a video in [ModelSilhouettesNormalized](./script/Visualize/Model Silhouettes/ModelSilouettesNormalized).
-  - [**Model Selection**](./script/Visualize/Model Selection) : Here you can find:
-    - `ModelSelection.m` / `ModelSelectionNormalized.m` : Perform the process of model selection wrt various selection criteria and output a file `seq_best_model.mat` with the models for each motion. Results are stored in [ModelSelectionResults](./script/Visualize/Model Selection/ModelSelectionResults).
-    - `ModelSelectionSilhouettePlotsNormalized.m` : Starting from the output of the selection process compute the silhouette plots and save them in [ModelSelectionSilhouettesNormalized](./script/Visualize/Model Selection/ModelSelectionSilhouettesNormalized).
-    - `VideoModelSelction.m` : Combine the results of the previous file in a video in [ModelSelectionSilhouettesNormalized](./script/Visualize/Model Selection/ModelSelectionSilhouettesNormalized).
+  - [**Model Silhouette**](./script/Visualize/Model%20Silhouettes) : Here you can find:
+    - `VisualizeModelsSilhouettePlots.m` /  `VisualizeModelsSilhouettePlotsNormalized.m` :  Save for each geometric model, foe each clip, for each couple of frames the silhouette plots derived from the geometric models. Results saved in [ModelSilouettes](./script/Visualize/Model%20Silhouettes/ModelSilouettes).
+    - `VisualizeVideoModelSilhouettes.m` : Combine the results of the previous files in a video in [ModelSilhouettesNormalized](./script/Visualize/Model%20Silhouettes/ModelSilouettesNormalized).
+  - [**Model Selection**](./script/Visualize/Model%20Selection) : Here you can find:
+    - `ModelSelection.m` / `ModelSelectionNormalized.m` : Perform the process of model selection wrt various selection criteria and output a file `seq_best_model.mat` with the models for each motion. Results are stored in [ModelSelectionResults](./script/Visualize/Model%20Selection/ModelSelectionResults).
+    - `ModelSelectionSilhouettePlotsNormalized.m` : Starting from the output of the selection process compute the silhouette plots and save them in [ModelSelectionSilhouettesNormalized](./script/Visualize/Model%20Selection/ModelSelectionSilhouettesNormalized).
+    - `VideoModelSelction.m` : Combine the results of the previous file in a video in [ModelSelectionSilhouettesNormalized](./script/Visualize/Model%20Selection/ModelSelectionSilhouettesNormalized).
 
 # Usage
 1. Refer to the Original README section to produce the experiment results.
