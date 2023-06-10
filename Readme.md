@@ -46,7 +46,7 @@ In this part we highlight specifically all the code contributions we developed i
   - [**HyperparameterTuning**](./script/Visualize/HyperparameterTuning): Here you can find:
     - `ModelSelectionHypertuning.m` : Perform the process of parameter tuning for lambda1, lambda2 and lambda3 of the GRIC. Results are saved in  `BestLambdasNormalized.m` and `BestLambdas.m`
   - [**Kmeans and Embeddings**](./script/Visualize/Kmeans and Embeddings) : Here you can find:
-    - `VisualizeKmeansInteractive.m` : Perform kmeans with the choices of the model and experiment, outputs the video in [SegmentationVideos]().
+    - `VisualizeKmeansInteractive.m` : Perform kmeans with the choices of the model and experiment, outputs the video in [SegmentationVideos](./script/Visualize/Kmeans and Embeddings/SegmentationVideos).
     - `VisualizeSilhouettePlots.m` : Plot all the silhouette plots with respect of the embeddings for all the models.
   - [**Model Silhouette**](./script/Visualize/Model Silhouettes) : Here you can find:
     - `VisualizeModelsSilhouettePlots.m` /  `VisualizeModelsSilhouettePlotsNormalized.m` :  Save for each geometric model, foe each clip, for each couple of frames the silhouette plots derived from the geometric models. Results saved in [ModelSilouettes](./script/Visualize/Model Silhouettes/ModelSilouettes).
