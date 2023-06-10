@@ -8,6 +8,7 @@ The original repository was created by Xun Xu, Loong-Fah Cheong and Zhuwen Li. N
 
 * **Data**: the KT3DMoSeg dataset. One `.mat` file per clip describing all its characteristics. 
 * **OriginalSequence**: the KT3DMoSeg dataset in images format.
+* **RepresentativeResults**: here you can find some of the results to grasp the utility of our work. All the results can be found in the relative folder as described below.
 * **Results**: this folder is used to save the results obtained from the following operations:
   - Sample hypotheses (Affine, Homography and Fundamental Matrix)
   - Compute the Ordered Residual Kernel (ORK) 
